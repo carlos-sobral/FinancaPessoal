@@ -5,12 +5,13 @@ import java.util.Calendar;
 
 import javax.persistence.*;
 
+import DAO.EntradaDAO;
 import dominio.Entrada;
 
 public class teste {
 
   public static void main(String[] args) {
-    EntityManagerFactory factory = Persistence.createEntityManagerFactory("Entrada");
+   
 
     Entrada entrada = new Entrada();
 	entrada.setValor(500);
@@ -20,14 +21,8 @@ public class teste {
 	entrada.setDataReferencia(c);
 	entrada.setDataEfetiva(c);
     
-	EntityManager manager = factory.createEntityManager();
-
-	manager.getTransaction().begin();    
-	manager.persist(entrada);
-	manager.getTransaction().commit();  
-
-	manager.close();
-	factory.close();
+	EntradaDAO entradaDao = new EntradaDAO();
+	entradaDao.salvar(entrada);
     
   }
 }
