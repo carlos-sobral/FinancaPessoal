@@ -4,6 +4,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import dominio.Entrada;
 
 public class EntradaDAO implements IDAO {
 
@@ -41,10 +44,16 @@ public class EntradaDAO implements IDAO {
 		return null;
 	}
 
-	@Override
-	public List<Object> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public List<Entrada> getAll() {
+		 
+		Query query = manager.createQuery("SELECT e FROM Entrada e");
+		List<Entrada> lista = query.getResultList();	
+		
+		manager.close();
+		factory.close();
+		
+		return lista;
 	}
 
 }

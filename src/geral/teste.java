@@ -2,6 +2,7 @@ package geral;
 
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -12,7 +13,7 @@ public class teste {
 
   public static void main(String[] args) {
    
-
+/* Bloco para testar a criacao de entrada
     Entrada entrada = new Entrada();
 	entrada.setValor(500);
 	entrada.setComentario("meu comentario");
@@ -23,6 +24,19 @@ public class teste {
     
 	EntradaDAO entradaDao = new EntradaDAO();
 	entradaDao.salvar(entrada);
+*/	
+	  
+	  
+/* Bloco para testar o getAll */	  
+	
+	EntradaDAO entradaDao = new EntradaDAO();
+	List<Entrada> lista =  entradaDao.getAll();
+		
+	for (Entrada e : lista) {
+	      System.out.println(e.getValor());
+	    }
+	  
+
     
   }
 }

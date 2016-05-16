@@ -37,8 +37,7 @@ public class AdicionaEntradaServlet extends HttpServlet {
 		EntradaDAO entradaDao = new EntradaDAO();
 		entradaDao.salvar(entrada);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("teste.jsp");
-		
+		RequestDispatcher rd = request.getRequestDispatcher("tables2.html");
 		rd.forward(request, response);
 		
 		
