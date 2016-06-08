@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <html lang="en">
 
 <head>
@@ -70,19 +72,25 @@
 									<table class="table table-bordered table-hover">
 										<thead>
 											<tr>
-												<th>Page</th>
-												<th>Visits</th>
-												<th>% New Visits</th>
-												<th>Revenue</th>
+												<th>valor</th>
+												<th>comentario</th>
+												<th>categoria</th>
+												<th>frequente</th>
+												<th>dataEfetiva</th>
+												<th>dataReferencia</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>/index.html</td>
-												<td>1265</td>
-												<td>32.3%</td>
-												<td>$321.33</td>
-											</tr>
+											<jsp:useBean id="entrada" class="dominio.Entrada"/>
+											<c:forEach var="entrada" items="${listaEntradas}" varStatus="i">
+												<tr>
+													<td>${entrada.valor}</td>
+													<td>${entrada.comentario}</td>
+													<td>${entrada.categoria.descricao}</td>
+												<!--	<td>${entrada.dataEfetiva}</td>-->
+												<!--	<td>${entrada.dataReferencia}</td>-->
+												</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>

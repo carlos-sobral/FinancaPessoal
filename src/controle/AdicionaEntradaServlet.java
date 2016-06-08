@@ -16,8 +16,7 @@ import dominio.Entrada;
 @WebServlet("/adiciona-entrada")
 public class AdicionaEntradaServlet extends HttpServlet {
 	
-	protected void doPost(HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		Entrada entrada = new Entrada();
 		entrada.setValor(Double.parseDouble(request.getParameter("valor")));
