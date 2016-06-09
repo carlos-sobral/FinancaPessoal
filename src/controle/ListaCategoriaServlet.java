@@ -1,8 +1,6 @@
 package controle;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,24 +10,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.EntradaDAO;
+import DAO.CategoriaDAO;
 import dominio.Categoria;
-import dominio.Entrada;
 
-@WebServlet("/lista-entrada")
-public class ListaEntradaServlet extends HttpServlet {
+
+@WebServlet("/lista-categoria")
+public class ListaCategoriaServlet extends HttpServlet {
+
 
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 	
-		EntradaDAO entradaDao = new EntradaDAO();
-		List<Entrada> lista =  entradaDao.getAll();	
-		request.setAttribute("listaEntradas", lista);
+		CategoriaDAO categoriaDao = new CategoriaDAO();
+		List<Categoria> lista =  categoriaDao.getAll();	
+		request.setAttribute("listaCategorias", lista);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("Lista.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("addEntradas.jsp");
 		rd.forward(request, response);
 		
 	}
 	
+	
 }
-
-

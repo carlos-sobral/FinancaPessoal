@@ -51,7 +51,7 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                 <li>
+                    <li>
                     	<a href="lista-entrada"><i class="fa fa-fw fa-table"></i> Entradas </a>
          	        </li>
                     <li>
@@ -68,11 +68,30 @@
 
 					<div class="container-fluid">
 
-					   <div class="jumbotron">
-                    <h1>Bem vindo a aplicação de Finança Pessoal!</h1>
-                    <p>Com ela você conseguirá lançar suas despesas, receitas e controlar sua saúde financeira</p>
-                    </p>
-                </div>
+					   <div class="row">
+							<div class="col-sm-6">
+								<form role="form" action="http://localhost:8080/FinancaPessoal/adiciona-categoria" method="post">
+								   <div class="form-group">
+										<label>Nome da Categoria</label>
+										<input class="form-control" name="categoria">
+									</div>
+									<button type="submit" class="btn btn-default">Submit Button</button>
+								</form>
+							</div>
+                            <div class="col-sm-6">
+								<div class="table-responsive">
+									<table class="table table-bordered table-hover">
+										<tbody>
+											<tr>
+												<td>${mensagem}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+								  
+					</div>
 							
 
 					</div>

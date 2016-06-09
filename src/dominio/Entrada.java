@@ -9,7 +9,8 @@ public class Entrada {
 	@GeneratedValue 
 	private Long id;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	//@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn
 	private Categoria categoria;
 	private boolean frequente;

@@ -51,11 +51,14 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li>
-                    	<a href="tables2.html"><i class="fa fa-fw fa-table"></i> Entradas</a>
+                	<li>
+                    	<a href="lista-entrada"><i class="fa fa-fw fa-table"></i> Entradas </a>
          	        </li>
                     <li>
-                    	<a href="relat.html"><i class="fa fa-fw fa-table"></i> Relatórios</a>
+                    	<a href="addCategorias.jsp"><i class="fa fa-fw fa-table"></i> Cadastro de Categorias</a>
+                   	</li>
+                    <li>
+                    	<a href="lista-categoria"><i class="fa fa-fw fa-table"></i> Cadastro de Entradas</a>
                    	</li>
             </div>
             <!-- /.navbar-collapse -->
@@ -66,36 +69,6 @@
 					<div class="container-fluid">
 
 					   <div class="row">
-							<div class="col-sm-6">
-								<h2>Bordered Table</h2>
-								<div class="table-responsive">
-									<table class="table table-bordered table-hover">
-										<thead>
-											<tr>
-												<th>valor</th>
-												<th>comentario</th>
-												<th>categoria</th>
-												<th>frequente</th>
-												<th>dataEfetiva</th>
-												<th>dataReferencia</th>
-											</tr>
-										</thead>
-										<tbody>
-											<jsp:useBean id="entrada" class="dominio.Entrada"/>
-											<c:forEach var="entrada" items="${listaEntradas}" varStatus="i">
-												<tr>
-													<td>${entrada.valor}</td>
-													<td>${entrada.comentario}</td>
-													<td>${entrada.categoria.descricao}</td>
-												<!--	<td>${entrada.dataEfetiva}</td>-->
-												<!--	<td>${entrada.dataReferencia}</td>-->
-												</tr>
-											</c:forEach>
-										</tbody>
-									</table>
-								</div>
-							</div>
-								  
 							<div class="col-sm-6">
 								<form role="form" action="http://localhost:8080/FinancaPessoal/adiciona-entrada" method="post">
 								   <div class="form-group">
@@ -109,18 +82,36 @@
 										<p class="help-block">Example block-level help text here.</p>
 									</div>
 									<div class="form-group">
-										<label>frequente</label>
-										<input class="form-control" name="frequente">
-										<p class="help-block">Example block-level help text here.</p>
+										<label>Entrada frequente?</label>
+                                			<label class="checkbox-inline">
+                                    			<input type="checkbox" name="frequente">Sim
+                                		</label>
 									</div>
 									<div class="form-group">
-									<label>categoria</label>
-										<input class="form-control" name="categoria">
-										<p class="help-block">Example block-level help text here.</p>
-									</div>
+                                        <label>Categoria</label>
+                                        <select class="form-control" name="categoria">
+                                            <jsp:useBean id="categoria" class="dominio.Categoria"/>
+											<c:forEach var="categoria" items="${listaCategorias}">
+												<option label="${categoria.descricao}">${categoria.id}</option>
+											</c:forEach>
+                                        </select>
+                                    </div>
 									<button type="submit" class="btn btn-default">Submit Button</button>
 								</form>
 							</div>
+                            <div class="col-sm-6">
+								<div class="table-responsive">
+									<table class="table table-bordered table-hover">
+										<tbody>
+											<tr>
+												<td>${mensagem}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+								  
 						</div>
 							
 

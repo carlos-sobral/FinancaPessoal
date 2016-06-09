@@ -1,4 +1,4 @@
-package geral;
+package util;
 
 import javax.persistence.*;
 

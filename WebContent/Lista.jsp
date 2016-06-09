@@ -51,7 +51,7 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                 <li>
+                  <li>
                     	<a href="lista-entrada"><i class="fa fa-fw fa-table"></i> Entradas </a>
          	        </li>
                     <li>
@@ -68,11 +68,38 @@
 
 					<div class="container-fluid">
 
-					   <div class="jumbotron">
-                    <h1>Bem vindo a aplicação de Finança Pessoal!</h1>
-                    <p>Com ela você conseguirá lançar suas despesas, receitas e controlar sua saúde financeira</p>
-                    </p>
-                </div>
+					   <div class="row">
+							<div class="col-sm-12">
+								<h2>Bordered Table</h2>
+								<div class="table-responsive">
+									<table class="table table-bordered table-hover">
+										<thead>
+											<tr>
+												<th>valor</th>
+												<th>comentario</th>
+												<th>categoria</th>
+												<th>frequente</th>
+												<th>dataEfetiva</th>
+												<th>dataReferencia</th>
+											</tr>
+										</thead>
+										<tbody>
+											<jsp:useBean id="entrada" class="dominio.Entrada"/>
+											<c:forEach var="entrada" items="${listaEntradas}">
+												<tr>
+													<td>${entrada.valor}</td>
+													<td>${entrada.comentario}</td>
+													<td>${entrada.categoria.descricao}</td>
+												<!--	<td>${entrada.dataEfetiva}</td>-->
+												<!--	<td>${entrada.dataReferencia}</td>-->
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+								</div>
+							</div>
+
+						</div>
 							
 
 					</div>

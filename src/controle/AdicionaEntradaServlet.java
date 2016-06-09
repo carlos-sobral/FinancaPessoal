@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.CategoriaDAO;
 import DAO.EntradaDAO;
 import dominio.Categoria;
 import dominio.Entrada;
@@ -22,21 +23,29 @@ public class AdicionaEntradaServlet extends HttpServlet {
 		entrada.setValor(Double.parseDouble(request.getParameter("valor")));
 		entrada.setComentario(request.getParameter("comentario"));
 		entrada.setFrequente(Boolean.parseBoolean(request.getParameter("frequente")));
-		System.out.println(entrada.getValor());
-		System.out.println(entrada.getComentario());
-		System.out.println(entrada.isFrequente());
+
+	
 		
-		Categoria cat = new Categoria();
-		cat.setDescricao(request.getParameter("categoria"));
+		CategoriaDAO categoriaDAO = new CategoriaDAO();
+		Categoria cat = (Categoria) categoriaDAO.getById(Integer.parseInt(request.getParameter("categoria")));
 		entrada.setCategoria(cat);
+
+		
 		Calendar c = Calendar.getInstance();
 		entrada.setDataReferencia(c);
 		entrada.setDataEfetiva(c);
-		    
-		EntradaDAO entradaDao = new EntradaDAO();
-		entradaDao.salvar(entrada);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("tables2.html");
+	try {    
+			EntradaDAO entradaDao = new EntradaDAO();
+			entradaDao.salvar(entrada);
+			request.setAttribute("mensagem", "A Entrada foi cadastrada com sucesso");
+	
+	} catch (Exception e) {
+			request.setAttribute("mensagem", "Erro ao cadastrar a entrada:" + e);
+		  }
+
+		
+		RequestDispatcher rd = request.getRequestDispatcher("addEntradas.jsp");
 		rd.forward(request, response);
 		
 		
